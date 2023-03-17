@@ -7,8 +7,7 @@ int main(){
     int number_of_days,i,l,j;//l stores the remainder after the calculation and i store the number of days in a week
 
     string day_of_the_week;
-
-	char today;
+    char today;
 
 	i=7;
 
@@ -16,15 +15,11 @@ int main(){
 
 	cout<<"This program finds the day of the week after a some number of days.\n";
 
-	cout<<"Please use 'm','t','w','r','f','s', and'u' for representing monday,tuesday,wednesday,\nthursday,friday,saturday, and sunday respectively."<<endl;
-
-	cout<<endl;
-
 	cout << "Please enter the number of days from now " << endl;
 
 	cin >> number_of_days;
 
-	cout<<"what day is today ";
+	cout<<"what day is today(please press 'm'' for monday, 't' for tuesday, 'r' for thursday, 'f' for friday, 's' for saterdat and any symbol for sunday) ";
 
 	cin>>today;
 
@@ -142,11 +137,25 @@ int main(){
 
     else{
 
-        if(j==2){
+       if(j==2){
 
 	cout<<"Sorry,you attempted too much. You can read books on discrete maths and try again later.";
-
-            exit(0);
+cout<<"the answer is ";
+        if(l==0){
+            cout<<"monday";}
+        else if(l==1){
+ 	cout<<"tuesday";}
+        else if(l==2) {
+ 	cout<<"wednesday";}   
+        else if(l==3) {
+    cout<<"thursday";}   
+       else if(l==4){
+    	cout<<"friday";}
+       else if(l==5){
+    	cout<<"saterday";}
+       else if(l==6){
+    	cout<<"sunday";}	
+    exit(0);
 
         }
 
@@ -164,5 +173,3 @@ int main(){
     return 0;
 
 }
-
-
