@@ -1,0 +1,20 @@
+/*this program checks students id and print id with name*/
+#include <iostream>
+#include <string.h>
+using namespace std;
+int main(){
+	char id[6][11]={"ETS0997/14","ETS1070/14","ETS1043/14", "ETS1030/14","ETS0997/14","ETS1097/14"};
+	string n[6]={"mahider","luhana","kumneger","leulseged","selam","meron"};
+	char name[11];
+	cout<<"Enter your id ";
+	cin>>name;
+	for(int i=0;i<6;i++){
+		if(!strcmp(id[i],name)){
+		cout<<" your name is "<<n[i]<<"\n your ID is "<<id[i];
+		return 0;
+                                        }
+                             }
+		cout<<"your id is invalid";
+
+return 0;
+}
