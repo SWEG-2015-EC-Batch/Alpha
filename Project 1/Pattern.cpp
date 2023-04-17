@@ -6,7 +6,7 @@ using namespace std;
 
 int main() {
     int num;
-    cout << "Please enter a positive integer n: ";
+    cout << "Please enter a positive integer num: ";
     cin >> num;
     if(num<=0){
      cout<<"Please enter a valid number";
