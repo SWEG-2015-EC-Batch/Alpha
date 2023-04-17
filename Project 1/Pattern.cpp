@@ -5,13 +5,14 @@ using namespace std;
 
 
 int main() {
-    int n;
-    cout << "Enter a positive integer n: ";
-    cin >> n;
-    if(n<=0){
+    int num;
+    cout << "Please enter a positive integer n: ";
+    cin >> num;
+    if(num<=0){
+     cout<<"Please enter a valid number";
      return 0;}
-    for (int i = n; i >= 0; i--) {
-        for (int j = 0; j < n - i; j++) {
+    for (int i = num; i >= 0; i--) {
+        for (int j = 0; j < num - i; j++) {
             cout << "  ";
         }
         for (int j = 0; j <= i; j++) {
@@ -22,8 +23,8 @@ int main() {
         }
         cout << endl;
     }
-    for (int i = 1; i <= n; i++) {
-        for (int j = 0; j < n - i; j++) {
+    for (int i = 1; i <= num; i++) {
+        for (int j = 0; j < num - i; j++) {
             cout << "  ";
         }
         for (int j = 0; j <= i; j++) {
