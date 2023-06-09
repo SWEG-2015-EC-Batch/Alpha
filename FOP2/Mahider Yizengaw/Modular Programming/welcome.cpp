@@ -9,7 +9,7 @@ int main(){
 }
 void greeting(){
      string name;
-    cout << "please enter your name" <<endl;
+    cout << "please enter your name" << endl;
     getline(cin,name);
     cout << "hello " << name << endl;
     cout << "welcome to m.p!!";
