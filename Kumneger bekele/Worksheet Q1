@@ -1,0 +1,16 @@
+/*1. Write a function named mult() that accepts two floating-point numbers as a
+parameters, multiplies these two numbers and display the result.*/
+#include <iostream>
+using namespace std;
+
+void mult(float n1, float n2) {
+    float result = n1 * n2;
+    cout << "The result is: " << result << endl;
+}
+
+int main() {
+    float n1 = 31.31;
+    float n2 = 3.1;
+    mult(n1, n2);
+    return 0;
+}
