@@ -1,7 +1,8 @@
 #include <iostream>
 #include <cmath>
 using namespace std;
-bool name(int j);
+bool prime(int j);
+
 int main()
 {   cout<<"this code is work for the number between 1 and 1000 so, please enter the correct number"<<endl;
     int j;
@@ -21,23 +22,22 @@ int main()
     }
 i+=1;}
 }
-    if(name(j)==1){
+    if(prime(j)==1){
         cout<<"the number you entered is prime"<<endl;
     }
     else
-        cout<<"the number you entered is not prime"<<endl;
+        cout<<"the number you entered is not prime or composite"<<endl;
 
     return 0;
 }
-bool name(int j){
 
+bool prime(int j){
 for(int i=2;i<=sqrt(j);i++){
     if(j%i==0){
         return 0;
     }
-    else
-        return true;
-}
+    }
+    return true;
 }
 
 
