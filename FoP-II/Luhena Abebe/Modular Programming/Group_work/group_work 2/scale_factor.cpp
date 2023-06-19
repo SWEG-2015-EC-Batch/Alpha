@@ -8,6 +8,7 @@ int main()
     cout<<"This code is used to scale the input given by the user "<<endl;
     cout<<"scale factor "<<endl;
     cin>>scale_f;
+    assert (scale_f!=0);
     cout<<"Please enter first value"<<endl;
     cin>>fnum;
     cout<<"Please enter second value"<<endl;
@@ -21,7 +22,6 @@ int main()
 }
 
 void scale(double scale_factor,double &fnum,double &snum){
-assert (scale_factor!=0);
 fnum=scale_factor*fnum;
 snum=scale_factor*snum;
 }
