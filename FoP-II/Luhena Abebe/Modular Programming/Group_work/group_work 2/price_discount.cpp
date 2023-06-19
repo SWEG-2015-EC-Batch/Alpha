@@ -15,12 +15,13 @@ int main()
     cin>>price;
     cout<<"please enter discount"<<endl;
     cin>>discount;
+    assert (discount>=0);
     cout<<"the discount is applicable the amount of discounted price : "<<discounted(price,discount,m)<<" "<<"$";
     return 0;
 }
 
 double discounted(double &price,double discount,bool m){
-    assert (discount>=0);
+    
 if(m==true){
 price=price-discount;
 assert (price!=0);
