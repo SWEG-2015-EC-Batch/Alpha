@@ -2,28 +2,36 @@
 using namespace std;
 
 int length(char my_char[]){
-      int vow=0;
-    int cons=0;
+
     int counter =0;
     int i=0;
     while (my_char[i]!='\0'){
-
-        if((int)my_char[i]==65 || (int)my_char[i]==69 || (int)my_char[i]==73 || (int)my_char[i]==79 || (int)my_char[i]==85){
-            vow=vow+1;
-        }
-        else if((int)my_char[i]==97 || (int)my_char[i]==101 || (int)my_char[i]==105 || (int)my_char[i]==111 || (int)my_char[i]==117){
-            vow=vow+1;
-        }
-        else if((int)my_char[i]>65 && (int)my_char[i]<=122){
-            cons+=1;
-        }
-
         counter =counter+1;
         i=i+1;
     }
 
     return counter;
 }
+
+
+//Number of consonant and vowel counter function
+void cons_vowel(char char_arr[]){
+      int vow=0,cons=0;
+
+      for(int i=0;i<length(char_arr);i++){
+            if((int)char_arr[i]==65 || (int)char_arr[i]==69 || (int)char_arr[i]==73 || (int)char_arr[i]==79 || (int)char_arr[i]==85){
+            vow=vow+1;
+        }
+        else if((int)char_arr[i]==97 || (int)char_arr[i]==101 || (int)char_arr[i]==105 || (int)char_arr[i]==111 || (int)char_arr[i]==117){
+            vow=vow+1;
+        }
+        else if((int)char_arr[i]>65 && (int)char_arr[i]<=122){
+            cons+=1;
+        }
+      }
+      cout<<"There is/are "<<vow<<" vowels and "<< cons<<" consonants"<<endl;
+}
+
 
 //Reverse function
 
@@ -67,6 +75,7 @@ int compare_s(char first_char[],char second_char[]){
         return 0;
     }
 }
+
 
 //Case converter functions
 void lowercase(char the_char[]){
