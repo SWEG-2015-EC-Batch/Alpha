@@ -35,5 +35,8 @@ int main()
     for (int i=0;i<length(m);i++){
         cout<<"Index "<<i<<" is "<<m[i]<<endl;
     }
+
+    //consonant and vowel numbers counter
+    cons_vowel(n);
     return 0;
 }
