@@ -7,7 +7,7 @@ int main()
     double current_price,rate_inflation,current_year;
     int choice_num,num_year, spec_year,num_item;
     current_price=0;
-    cout<<"This program allows users to calculate for a price certain for a specific or some number of years from now\n";
+    cout<<"This program allows users to calculate price for certain items for a specific or some number of years from now\n";
     cout<<"Note: Please use only appropriate numeric values as an answer for every question asked below"<<endl;
     cout<<"please enter the current price of the item"<<endl;
     cin>>current_price;
