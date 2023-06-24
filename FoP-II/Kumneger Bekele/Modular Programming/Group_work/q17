@@ -1,0 +1,27 @@
+#include <iostream>
+#include <cmath>
+using namespace std;
+
+
+double windChillIndex(double temperature, double windSpeed) {
+    if (temperature > 10.0 || temperature < -50.0) {
+        cout << "Invalid temperature input." << endl;
+        return 0.0;
+    }
+    double windChill = 35.74 + 0.6215 * temperature - 35.75 * pow(windSpeed, 0.16) + 0.4275 * temperature * pow(windSpeed, 0.16);
+    return windChill;
+}
+
+int main() {
+    double temperature, windSpeed;
+    cout << "Enter temperature in degrees Fahrenheit: ";
+    cin >> temperature;
+    cout << "Enter wind speed in miles per hour: ";
+    cin >> windSpeed;
+
+    double windChill = windChillIndex(temperature, windSpeed);
+    if (windChill > 0.0)
+        cout << "The wind chill index is " << windChill << " degrees Fahrenheit." << endl;
+
+    return 0;
+}
