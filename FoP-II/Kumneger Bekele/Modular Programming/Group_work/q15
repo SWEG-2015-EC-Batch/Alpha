@@ -1,0 +1,25 @@
+#include <iostream>
+#include <cassert>
+
+using namespace std;
+
+void scale(double value, double& value1, double& value2) {
+    assert(value != 0.0);
+    cout << "Before scaling: value1 = " << value1 << ", value2 = " << value2 << endl;
+    value1 *= value;
+    value2 *= value;
+    cout << "After scaling: value1 = " << value1 << ", value2 = " << value2 << endl;
+}
+
+int main() {
+    double value = 2.0;
+    double value1 = 3.0;
+    double value2 = 4.0;
+
+    scale(value, value1, value2);
+
+    value = 0.5;
+    scale(value, value1, value2);
+
+    return 0;
+}
