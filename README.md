@@ -14,4 +14,4 @@ To describe our group, we are passionate, committed, and always searching for so
 
 ##Contributors
 * [Kumneger Bekele]
-(https://github.com/SWEG-2015-EC-Batch/Alpha/tree/main/FoP-II/Kumneger%20Bekele/Modular%20Programming)
+(https://github.com/KumnegerBekele)
