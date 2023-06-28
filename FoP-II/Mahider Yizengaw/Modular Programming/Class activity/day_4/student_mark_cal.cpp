@@ -1,4 +1,4 @@
-//this program computes the sum of the imput marks and display the input student's attributes and the sum of marks
+//this program computes the sum of the input marks and display the input student's attributes and the sum of marks
 #include<iostream>
 
 using namespace std;
