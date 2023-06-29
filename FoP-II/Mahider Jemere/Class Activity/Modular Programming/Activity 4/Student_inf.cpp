@@ -2,7 +2,7 @@
 
 using namespace std;
 
-//This program accept and prints out informations related to students
+//This program accepts and prints out informations related to students
 struct student{
     string id;
     string name;
