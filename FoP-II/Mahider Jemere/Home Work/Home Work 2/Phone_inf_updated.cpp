@@ -1,6 +1,7 @@
 #include <iostream>
 using namespace std;
 //This program is the updated version of phone_info.cpp of activity 4
+//The link for older version: https://github.com/SWEG-2015-EC-Batch/Alpha/blob/main/FoP-II/Mahider%20Jemere/Class%20Activity/Modular%20Programming/Activity%204/Phone_info.cpp
 
 struct phone{
 	int area_code,exchange,number;
