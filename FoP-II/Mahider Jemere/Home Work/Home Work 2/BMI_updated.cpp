@@ -3,7 +3,7 @@
 using namespace std;
 
 //This program adds function concept to update the BMI_struct.cpp of activity 4
-
+//The link for older version: https://github.com/SWEG-2015-EC-Batch/Alpha/blob/main/FoP-II/Mahider%20Jemere/Class%20Activity/Modular%20Programming/Activity%204/BMI_struct.cpp
 struct BMI{
     string name;
     float weight,height,bdy_MI;
