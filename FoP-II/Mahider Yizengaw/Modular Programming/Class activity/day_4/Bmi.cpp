@@ -55,7 +55,7 @@ int main(){
                 cout << "Name: " << p1[i].name << endl;
                 cout << "Gender: " << p1[i].gender << endl;
                 cout << "Age: " << p1[i].age << endl;
-                cout << "BMI: " << p1[i].bmi << " which is underweight" << endl;
+                cout << "BMI: " << p1[i].bmi << " which is normal" << endl;
             }
 
            else if(p1[i].bmi > 25){
@@ -63,7 +63,7 @@ int main(){
                 cout << "Name: " << p1[i].name << endl;
                 cout << "Gender: " << p1[i].gender << endl;
                 cout << "Age: " << p1[i].age << endl;
-                cout << "BMI: " << p1[i].bmi << " which is underweight" << endl;
+                cout << "BMI: " << p1[i].bmi << " which is overweight" << endl;
             }
         }
 
