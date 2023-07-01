@@ -31,7 +31,7 @@ int main(){
     cout << "ID: " << s1.id << endl;
     //loop until the number of tests
     for(int i = 0;i < 2;i++){
-        cout <<"test " << i + 1 << ":" << s1.testmark[0] << endl;
+        cout <<"test " << i + 1 << ":" << s1.testmark[i] << endl;
     }
     cout << "final mark: " << s1.finalmark;
 
