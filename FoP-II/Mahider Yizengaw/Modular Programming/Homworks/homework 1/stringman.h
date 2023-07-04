@@ -62,7 +62,7 @@ int strcmr(char *str1,char *str2){
 // A function definition for converting a string to lowercase
 void lowercase(char *str){
   int i = 0;
-  //Loop until until the end of the string
+  //Loop until the end of the string
   while(str[i] != '\0'){
     if(str[i] > 'A' && str[i] < 'Z'){
       str[i] = str[i] + 32;
