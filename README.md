@@ -14,7 +14,7 @@ Addis Ababa Science and Technology University
 ## Contributors
 * <a href="https://github.com/Kumneger31" >Kumneger Bekele</a>
 * <a href="https://github.com/leulsegedtsegaye" >Leulseged Tsegaye</a>
-* <a href="https://github.com/luhenaabebe" >Luhena Abebe (Goupr Leader)</a>
+* <a href="https://github.com/luhenaabebe" >Luhena Abebe (Group Leader)</a>
 * <a href="https://github.com/Mahi-gitlex" >Mahider Jemere</a>
 * <a href="https://github.com/Finotmah" >Mahider Yizengaw</a>
 
