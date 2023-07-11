@@ -19,10 +19,10 @@ bool compareByID(const Employee& emp1, const Employee& emp2) {
 void createEmployeeFile() {
     ofstream file("employees.txt");
 
-    Employee employees[2];
+    Employee employees[10];
 
     cout << "Enter the information for 10 employees:\n";
-    for (int i = 0; i < 2; i++) {
+    for (int i = 0; i < 10; i++) {
         cout << "Employee " << i + 1 << ":\n";
         cout << "ID No.: ";
         cin >> employees[i].id;
