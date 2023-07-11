@@ -1,0 +1,3 @@
+What is DNS and Why Do We Need It?
+The Domain Name System (DNS) translates alphabetical domain names — web addresses, which we find easier to remember, to their machine-friendly numeric equivalents — IP addresses, which devices connected to the Internet use to communicate to each other.
+We don’t even realize how powerful DNS network is because it is transparent for us and runs in the background. It is able to connect billions of users to more than 300 million domain names, and we just take this sophisticated engineering solution for granted using it multiple times a day while doing our jobs, checking emails, or just surfing the Web.
