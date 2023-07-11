@@ -1,0 +1,5 @@
+luhena	abebe	1000	345.79
+soyam	abebe	1001	34.68
+tamrat	abebe	1002	23.77
+jemila	hayder	1003	2345.00
+abebe	zerga	1004	34.00
