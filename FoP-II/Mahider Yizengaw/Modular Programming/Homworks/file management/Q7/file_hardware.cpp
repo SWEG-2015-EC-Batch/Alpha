@@ -3,9 +3,11 @@
 #include <iomanip>
 #include <string>
 
+using namespace std;
+
 struct Tool {
     int id;
-    std::string name;
+    string name;
     int quantity;
     double cost;
 };
@@ -17,40 +19,40 @@ void initializeFile(std::fstream &file) {
     }
 }
 
-void addTool(std::fstream &file) {
+void addTool(fstream &file) {
     Tool tool;
-    std::cout << "Enter tool ID (1-100): ";
-    std::cin >> tool.id;
+    cout << "Enter tool ID (1-100): ";
+    cin >> tool.id;
 
     file.seekg((tool.id - 1) * sizeof(Tool));
     file.read(reinterpret_cast<char *>(&tool), sizeof(Tool));
 
     if (tool.id != 0) {
-        std::cerr << "Tool already exists." << std::endl;
+        cerr << "Tool already exists." << std::endl;
         return;
     }
 
-    std::cout << "Enter tool name: ";
-    std::cin >> tool.name;
-    std::cout << "Enter quantity: ";
-    std::cin >> tool.quantity;
-    std::cout << "Enter cost: ";
-    std::cin >> tool.cost;
+    cout << "Enter tool name: ";
+    cin >> tool.name;
+    cout << "Enter quantity: ";
+    cin >> tool.quantity;
+    cout << "Enter cost: ";
+    cin >> tool.cost;
 
     file.seekp((tool.id - 1) * sizeof(Tool));
     file.write(reinterpret_cast<const char *>(&tool), sizeof(Tool));
 }
 
-void listTools(std::fstream &file) {
+void listTools(fstream &file) {
     Tool tool;
-    std::cout << std::left << std::setw(10) << "ID" << std::setw(20) << "Name" << std::setw(10) << "Quantity" << std::setw(10) << "Cost" << std::endl;
+    cout << left << setw(10) << "ID" << setw(20) << "Name" << setw(10) << "Quantity" << setw(10) << "Cost" << endl;
 
     for (int i = 0; i < 100; i++) {
         file.seekg(i * sizeof(Tool));
         file.read(reinterpret_cast<char *>(&tool), sizeof(Tool));
 
         if (tool.id != 0) {
-            std::cout << std::left << std::setw(10) << tool.id << std::setw(20) << tool.name << std::setw(10) << tool.quantity << std::setw(10) << tool.cost << std::endl;
+            cout << left << setw(10) << tool.id << setw(20) << tool.name << setw(10) << tool.quantity << setw(10) << tool.cost << endl;
         }
     }
 }
@@ -59,58 +61,58 @@ void deleteTool(std::fstream &file) {
     int id;
     Tool blankTool = {0, "", 0, 0.0};
 
-    std::cout << "Enter tool ID to delete: ";
-    std::cin >> id;
+    cout << "Enter tool ID to delete: ";
+    cin >> id;
 
     file.seekg((id - 1) * sizeof(Tool));
     file.write(reinterpret_cast<const char *>(&blankTool), sizeof(Tool));
 }
 
-void updateTool(std::fstream &file) {
+void updateTool(fstream &file) {
     Tool tool;
     int id;
 
-    std::cout << "Enter tool ID to update: ";
-    std::cin >> id;
+    cout << "Enter tool ID to update: ";
+    cin >> id;
 
     file.seekg((id - 1) * sizeof(Tool));
     file.read(reinterpret_cast<char *>(&tool), sizeof(Tool));
 
     if (tool.id == 0) {
-        std::cerr << "Tool does not exist." << std::endl;
+        cerr << "Tool does not exist." << endl;
         return;
     }
 
-    std::cout << "Enter new name: ";
-    std::cin >> tool.name;
-    std::cout << "Enter new quantity: ";
-    std::cin >> tool.quantity;
-    std::cout << "Enter new cost: ";
-    std::cin >> tool.cost;
+    cout << "Enter new name: ";
+    cin >> tool.name;
+    cout << "Enter new quantity: ";
+    cin >> tool.quantity;
+    cout << "Enter new cost: ";
+    cin >> tool.cost;
 
     file.seekp((id - 1) * sizeof(Tool));
     file.write(reinterpret_cast<const char *>(&tool), sizeof(Tool));
 }
 
 int main() {
-    std::fstream file("hardware.dat", std::ios::in | std::ios::out | std::ios::binary);
+    fstream file("hardware.dat", ios::in | ios::out | ios::binary);
 
     if (!file) {
-        file.open("hardware.dat", std::ios::out);
+        file.open("hardware.dat", ios::out);
         file.close();
-        file.open("hardware.dat", std::ios::in | std::ios::out | std::ios::binary);
+        file.open("hardware.dat", ios::in | ios::out | ios::binary);
         initializeFile(file);
     }
 
     int choice;
     while (true) {
-        std::cout << "1. Add tool" << std::endl;
-        std::cout << "2. List tools" << std::endl;
-        std::cout << "3. Delete tool" << std::endl;
-        std::cout << "4. Update tool" << std::endl;
-        std::cout << "5. Quit" << std::endl;
-        std::cout << "Enter choice: ";
-        std::cin >> choice;
+        cout << "1. Add tool" << endl;
+        cout << "2. List tools" << endl;
+        cout << "3. Delete tool" << endl;
+        cout << "4. Update tool" << endl;
+        cout << "5. Quit" << endl;
+        cout << "Enter choice: ";
+        cin >> choice;
 
         switch (choice) {
             case 1:
@@ -129,7 +131,7 @@ int main() {
                 file.close();
                 return 0;
             default:
-                std::cerr << "Invalid choice." << std::endl;
+                cerr << "Invalid choice." << endl;
                 break;
         }
     }
