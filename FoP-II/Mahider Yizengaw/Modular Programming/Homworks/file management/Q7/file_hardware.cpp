@@ -1,135 +1,136 @@
 #include <iostream>
 #include <fstream>
-#include <cstdlib>
+#include <iomanip>
 #include <string>
-using namespace std;
 
-class Tool {
-public:
-    Tool() : id(0), name(""), quantity(0), cost(0.0) {}
-    Tool(int i, string n, int q, double c) : id(i), name(n), quantity(q), cost(c) {}
-    void set(int i, string n, int q, double c) { id = i; name = n; quantity = q; cost = c; }
-    void display() const { cout << id << '\t' << name << '\t' << quantity << '\t' << cost << endl; }
-private:
+struct Tool {
     int id;
-    string name;
+    std::string name;
     int quantity;
     double cost;
 };
 
-void writeData(fstream& file);
-void readData(fstream& file);
-void updateData(fstream& file);
-void deleteData(fstream& file);
+void initializeFile(std::fstream &file) {
+    Tool blankTool = {0, "", 0, 0.0};
+    for (int i = 0; i < 100; i++) {
+        file.write(reinterpret_cast<const char *>(&blankTool), sizeof(Tool));
+    }
+}
+
+void addTool(std::fstream &file) {
+    Tool tool;
+    std::cout << "Enter tool ID (1-100): ";
+    std::cin >> tool.id;
+
+    file.seekg((tool.id - 1) * sizeof(Tool));
+    file.read(reinterpret_cast<char *>(&tool), sizeof(Tool));
+
+    if (tool.id != 0) {
+        std::cerr << "Tool already exists." << std::endl;
+        return;
+    }
+
+    std::cout << "Enter tool name: ";
+    std::cin >> tool.name;
+    std::cout << "Enter quantity: ";
+    std::cin >> tool.quantity;
+    std::cout << "Enter cost: ";
+    std::cin >> tool.cost;
+
+    file.seekp((tool.id - 1) * sizeof(Tool));
+    file.write(reinterpret_cast<const char *>(&tool), sizeof(Tool));
+}
+
+void listTools(std::fstream &file) {
+    Tool tool;
+    std::cout << std::left << std::setw(10) << "ID" << std::setw(20) << "Name" << std::setw(10) << "Quantity" << std::setw(10) << "Cost" << std::endl;
+
+    for (int i = 0; i < 100; i++) {
+        file.seekg(i * sizeof(Tool));
+        file.read(reinterpret_cast<char *>(&tool), sizeof(Tool));
+
+        if (tool.id != 0) {
+            std::cout << std::left << std::setw(10) << tool.id << std::setw(20) << tool.name << std::setw(10) << tool.quantity << std::setw(10) << tool.cost << std::endl;
+        }
+    }
+}
+
+void deleteTool(std::fstream &file) {
+    int id;
+    Tool blankTool = {0, "", 0, 0.0};
+
+    std::cout << "Enter tool ID to delete: ";
+    std::cin >> id;
+
+    file.seekg((id - 1) * sizeof(Tool));
+    file.write(reinterpret_cast<const char *>(&blankTool), sizeof(Tool));
+}
+
+void updateTool(std::fstream &file) {
+    Tool tool;
+    int id;
+
+    std::cout << "Enter tool ID to update: ";
+    std::cin >> id;
+
+    file.seekg((id - 1) * sizeof(Tool));
+    file.read(reinterpret_cast<char *>(&tool), sizeof(Tool));
+
+    if (tool.id == 0) {
+        std::cerr << "Tool does not exist." << std::endl;
+        return;
+    }
+
+    std::cout << "Enter new name: ";
+    std::cin >> tool.name;
+    std::cout << "Enter new quantity: ";
+    std::cin >> tool.quantity;
+    std::cout << "Enter new cost: ";
+    std::cin >> tool.cost;
+
+    file.seekp((id - 1) * sizeof(Tool));
+    file.write(reinterpret_cast<const char *>(&tool), sizeof(Tool));
+}
 
 int main() {
-    fstream file("hardware.dat", ios::in | ios::out | ios::binary);
+    std::fstream file("hardware.dat", std::ios::in | std::ios::out | std::ios::binary);
+
     if (!file) {
-        cerr << "File could not be opened." << endl;
-        exit(EXIT_FAILURE);
+        file.open("hardware.dat", std::ios::out);
+        file.close();
+        file.open("hardware.dat", std::ios::in | std::ios::out | std::ios::binary);
+        initializeFile(file);
     }
 
     int choice;
-    do {
-        cout << "\n\nEnter your choice:\n"
-            "1 - store a formatted text file of hardware tools called \"tools.txt\" for printing\n"
-            "2 - input new records\n"
-            "3 - list all records\n"
-            "4 - update a record\n"
-            "5 - delete a record\n"
-            "6 - end program\n";
-        cin >> choice;
+    while (true) {
+        std::cout << "1. Add tool" << std::endl;
+        std::cout << "2. List tools" << std::endl;
+        std::cout << "3. Delete tool" << std::endl;
+        std::cout << "4. Update tool" << std::endl;
+        std::cout << "5. Quit" << std::endl;
+        std::cout << "Enter choice: ";
+        std::cin >> choice;
 
         switch (choice) {
-        case 1:
-            writeData(file);
-            break;
-        case 2:
-            file.clear();
-            writeData(file);
-            break;
-        case 3:
-            readData(file);
-            break;
-        case 4:
-            updateData(file);
-            break;
-        case 5:
-            deleteData(file);
-            break;
-        case 6:
-            cout << "Program terminating.\n";
-            break;
-        default:
-            cout << "Invalid choice.\n";
-            break;
+            case 1:
+                addTool(file);
+                break;
+            case 2:
+                listTools(file);
+                break;
+            case 3:
+                deleteTool(file);
+                break;
+            case 4:
+                updateTool(file);
+                break;
+            case 5:
+                file.close();
+                return 0;
+            default:
+                std::cerr << "Invalid choice." << std::endl;
+                break;
         }
-    } while (choice != 6);
-
-    return 0;
-}
-
-void writeData(fstream& file) {
-    ofstream outFile("tools.txt", ios::out);
-
-    if (!outFile) {
-        cerr << "File could not be opened." << endl;
-        exit(EXIT_FAILURE);
     }
-
-    Tool blankTool;
-    for (int i = 0; i < 100; ++i)
-        outFile.write(reinterpret_cast<const char*>(&blankTool), sizeof(Tool));
-
-    outFile.close();
-
-    cout << "\nNew hardware.dat created.\n";
-}
-
-void readData(fstream& file) {
-    Tool tool;
-
-    cout << "\n\nTool ID\tName\tQuantity\tCost\n";
-
-    file.seekg(0);
-
-    while (file.read(reinterpret_cast<char*>(&tool), sizeof(Tool)))
-        if (tool.display(), true)
-            ;
-
-}
-
-void updateData(fstream& file) {
-    int id;
-    string name;
-    int quantity;
-    double cost;
-
-    cout << "\nEnter tool ID to update: ";
-    cin >> id;
-
-    file.seekg((id - 1) * sizeof(Tool));
-
-    Tool tool;
-
-    if (file.read(reinterpret_cast<char*>(&tool), sizeof(Tool))) {
-        cout << tool.id << '\t' << tool.name << '\t' << tool.quantity << '\t' << tool.cost << endl;
-
-        cout << "\nEnter new tool data:\n";
-        cout << "Name: "; cin >> ws; getline(cin, name);
-        cout << "Quantity: "; cin >> quantity;
-        cout << "Cost: "; cin >> cost;
-
-        tool.set(id, name, quantity, cost);
-
-        file.seekp((id - 1) * sizeof(Tool));
-        file.write(reinterpret_cast<const char*>(&tool), sizeof(Tool));
-    }
-}
-
-void deleteData(fstream& file) {
-    int id;
-
-    cout << "\nEnter tool ID to delete: ";
-    cin >> id;
 }
