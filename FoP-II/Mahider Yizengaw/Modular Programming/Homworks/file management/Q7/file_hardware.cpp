@@ -12,7 +12,7 @@ struct Tool {
     double cost;
 };
 
-void initializeFile(std::fstream &file) {
+void initializeFile(fstream &file) {
     Tool blankTool = {0, "", 0, 0.0};
     for (int i = 0; i < 100; i++) {
         file.write(reinterpret_cast<const char *>(&blankTool), sizeof(Tool));
@@ -28,7 +28,7 @@ void addTool(fstream &file) {
     file.read(reinterpret_cast<char *>(&tool), sizeof(Tool));
 
     if (tool.id != 0) {
-        cerr << "Tool already exists." << std::endl;
+        cerr << "Tool already exists." << endl;
         return;
     }
 
@@ -57,7 +57,7 @@ void listTools(fstream &file) {
     }
 }
 
-void deleteTool(std::fstream &file) {
+void deleteTool(fstream &file) {
     int id;
     Tool blankTool = {0, "", 0, 0.0};
 
